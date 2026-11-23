@@ -7,6 +7,8 @@ from ball import Ball
 from zombie import Zombie
 import random
 
+import zombie
+
 boy = None
 
 
@@ -26,6 +28,9 @@ def handle_events():
 
 def init():
     global boy
+
+    
+#
 
     #객체들을 생성
     boy = Boy()
@@ -47,7 +52,11 @@ def init():
     for ball in balls:
         game_world.add_collision_pairs("boy:ball", None, ball)
 
-
+    game_world.add_collision_pairs('boy:zombie', boy, None)
+    for zombie in zombies:
+        game_world.add_collision_pairs('boy:zombie', None, zombie)
+        
+    
 
 def pause():
     boy.pause()
