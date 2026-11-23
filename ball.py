@@ -46,5 +46,5 @@ class Ball:
         return self.x - 10, self.y - 10, self.x + 10, self.y + 10
 
     def handle_collision(self, group, other):
-        if group == "boy:ball": 
+        if group in ('boy:ball', 'zombie:ball'):
             game_world.remove_object(self) #공을 제거 
