@@ -24,7 +24,7 @@ class Zombie:
     SPEED = 10.0 * 1000.0 / 3600.0 * (10.0 / 0.3)
 
     # 좀비를 만들고 이동 범위를 정한다. x가 없으면 범위 안에서 무작위로 배치한다.
-    def __init__(self, x=None, y=150, min_x=400, max_x=1600):
+    def __init__(self, x=None, y=150, min_x=800, max_x=1600):
         # 이미지 목록이 없을 때 걷기 이미지 10장을 읽는다.
         # range는 끝 숫자를 포함하지 않아 FRAME_COUNT + 1까지 지정한다.
         if Zombie.images is None:
