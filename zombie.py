@@ -33,10 +33,15 @@ class Zombie:
                 for i in range(1, self.FRAME_COUNT + 1)
             ]
 
+        # 좌우 이동의 경계를 저장한다.
         self.min_x, self.max_x = min_x, max_x
+        # x를 지정하면 경계 안으로 제한하고, 생략하면 무작위 위치를 선택한다.
         self.x = random.randint(min_x, max_x) if x is None else clamp(min_x, x, max_x)
         self.y = y
+        # -1은 왼쪽, 1은 오른쪽이며 처음 방향을 무작위로 정한다.
         self.dir = random.choice([-1, 1])
+        # 각 좀비가 서로 다른 걷기 자세에서 시작하도록 정한다.
+        self.frame = random.uniform(0, self.FRAME_COUNT)
 
     # 매 프레임 좀비의 애니메이션과 위치를 갱신한다.
     def update(self):
@@ -66,6 +71,7 @@ class Zombie:
         # *는 get_bb()가 반환한 좌표 네 개를 각각의 인자로 전달한다.
         draw_rectangle(*self.get_bb())
 
-    # 박스
+    # 왼쪽, 아래쪽, 오른쪽, 위쪽 순서로 충돌 박스 좌표를 반환한다.
+    # 200×200 크기이므로 중심에서 각 방향으로 100픽셀씩 떨어진다.
     def get_bb(self):
         return self.x - 100, self.y - 100, self.x + 100, self.y + 100

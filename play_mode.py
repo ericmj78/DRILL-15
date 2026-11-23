@@ -6,7 +6,6 @@ from grass import Grass
 from ball import Ball
 from zombie import Zombie
 import random
-
 import zombie
 
 boy = None
@@ -43,7 +42,7 @@ def init():
     game_world.add_oject(grass, 0)
     game_world.add_objects(balls, 1)
 
-    zombies = [Zombie() for _ in range(1)]
+    zombies = [Zombie() for _ in range(4)]
     game_world.add_objects(zombies, 1)
 
 
